@@ -1,0 +1,87 @@
+/* 🔹 Overlay Background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* 🔹 Modal Box */
+  .modal-content {
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* 🔹 Input Fields */
+  .modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* 🔹 Buttons */
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .saveBtn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .closeBtn {
+    background: gray;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* 🔹 Button Hover Effects */
+  .saveBtn:hover {
+    background: #0056b3;
+  }
+  .saveBtn:disabled{
+    background-color: grey;
+  }
+  .closeBtn:hover {
+    background: #555;
+  }
+  .mdlLbl{
+    text-align: left;
+    font-weight: 900;
+  }
+  /* 🔹 Responsive Design */
+  @media (max-width: 480px) {
+    .modal-content {
+      width: 95%;
+      padding: 15px;
+    }
+  }
+  .error-message {
+    color: red;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* animation: fadeIn 0.5s ease-in-out; */
+  }

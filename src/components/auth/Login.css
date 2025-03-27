@@ -1,0 +1,173 @@
+/* Full-screen background */
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
+  
+.login-bg {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Login container */
+  .login-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 480px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    z-index: 1;
+  }
+  
+  /* Heading with logo */
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .icon {
+    font-size: 2rem;
+    color: #4facfe;
+    animation: bounce 1.5s infinite;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-left: 10px;
+  }
+  
+  /* Input fields */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  .input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 6px !important;
+    outline: none;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+  }
+  
+  /* Show Password Checkbox */
+  .show-password {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  
+  .show-password input {
+    cursor: pointer;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .success-message {
+    color: green;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Button with hover effect */
+  .login-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #4facfe;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .login-btn:disabled {
+    background: gray;
+    cursor: not-allowed;
+  }
+  
+  .login-btn:hover:not(:disabled) {
+    background: #00c6fb;
+    box-shadow: 0 5px 15px rgba(0, 198, 251, 0.5);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 600px) {
+    .heading-section {
+      top: 10px;
+    }
+  
+    .heading-text {
+      font-size: 1.2rem;
+    }
+  
+    .login-container {
+      width: 90%;
+      padding: 20px;
+    }
+    .input{
+      /* width: 300px; */
+    }
+  }
+  
