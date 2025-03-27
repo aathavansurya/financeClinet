@@ -46,7 +46,11 @@ const Login = () => {
         e.preventDefault();
         console.log(username,password,url);
         
-       const response = await axios.post(url+'/login',{userName:username,password});
+       const response = await axios.post(url+'/login',{userName:username,password},{
+            headers:{
+                "Content-Type":"application/json"
+            }
+       });
        console.log(response.data);
        if(response.data.status === 200){
         setLoginSuccess(true);
