@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-
+import * as urls from '../api.js'; 
 import axios from 'axios'
 import './Login.css';
 import { TbBrandCashapp } from "react-icons/tb";
@@ -40,13 +40,12 @@ const Login = () => {
   }, [username, password]);
 
   // Handle button click when disabled
-  const url = " http://localhost:3400"
   const handleButtonClick = async (e) => {
     try{
         e.preventDefault();
-        console.log(username,password,url);
+        console.log(username,password);
         
-       const response = await axios.post(url+'/login',{userName:username,password},{
+       const response = await axios.post(urls.login,{userName:username,password},{
             headers:{
                 "Content-Type":"application/json"
             }

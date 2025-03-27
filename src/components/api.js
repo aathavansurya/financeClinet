@@ -7,7 +7,8 @@ const addDue = url+"/addDue"
 const fetchHistories = url+"/fetchHistories"
 const updateProfile = url+"/updateProfile"
 const addProfile = url+"/addProfile"
+const login = url+"/login"
 
 
 
-export  {addLoans , validateToken , fetchLoans ,addProfile , addDue ,fetchHistories , updateProfile}
+export  {addLoans , validateToken ,login, fetchLoans ,addProfile , addDue ,fetchHistories , updateProfile}
