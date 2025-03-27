@@ -55,7 +55,7 @@ function Profile() {
       const response = await axios.post(urls.updateProfile, payload, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionToken}`,
+          Authorization: `${sessionToken}`,
         },
       });
       localStorage.setItem("sessionToken", response.data.body.jwt);
@@ -76,7 +76,7 @@ function Profile() {
       await axios.post(urls.addProfile, payload, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionToken}`,
+          Authorization: `${sessionToken}`,
         },
       });
       setIsSubmitted(true);

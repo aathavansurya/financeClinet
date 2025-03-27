@@ -36,7 +36,7 @@ function Loanstable() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${sessionToken}`,
+            Authorization: `${sessionToken}`,
           },
         }
       );

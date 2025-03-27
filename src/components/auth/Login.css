@@ -31,7 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
   
   .icon {
@@ -44,7 +44,7 @@
     font-size: 1.8rem;
     font-weight: bold;
     color: #333;
-    margin-left: 10px;
+    margin:0 0 0 10px;
   }
   
   /* Input fields */
@@ -167,7 +167,6 @@
       padding: 20px;
     }
     .input{
-      /* width: 300px; */
+      width: 100%;
     }
   }
-  

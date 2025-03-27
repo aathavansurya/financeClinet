@@ -23,7 +23,7 @@ const History = () => {
       const response = await axios.post(url.fetchHistories, filters, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionToken}`, // ✅ Correct format
+          Authorization: `${sessionToken}`, // ✅ Correct format
         },
       });
 

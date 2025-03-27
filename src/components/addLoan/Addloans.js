@@ -63,7 +63,7 @@ function AddLoan() {
           const response = await axios.post(urls.addLoans, formData, {
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${sessionToken}`, // ✅ Correct format
+              "Authorization": `${sessionToken}`, // ✅ Correct format
             },
           });
     

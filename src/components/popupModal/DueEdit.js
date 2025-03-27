@@ -49,7 +49,7 @@ const PopupModal = ({ isOpen, onClose, editItem }) => {
         await axios.post(urls.addDue, payload, {
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${sessionToken}`, // ✅ Correct format
+              "Authorization": `${sessionToken}`, // ✅ Correct format
             },
           });
          onClose(); // Close modal after saving

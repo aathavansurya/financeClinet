@@ -88,7 +88,7 @@ const Login = () => {
           <div className="icon">
             <TbBrandCashapp />
           </div>
-          <span className="title">Lesson</span>
+          <span className="title">Finance</span>
         </div>
 
         {/* Form Section */}
