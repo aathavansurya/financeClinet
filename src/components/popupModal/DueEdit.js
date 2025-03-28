@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./PopupModal.css";
 import axios from "axios";
-import * as urls from '../api.js'
+import * as urls from "../api.js";
 
 const PopupModal = ({ isOpen, onClose, editItem }) => {
   const [dueAmount, setDueAmount] = useState(0);
+  const [dueAddedDate, setDueAddedDate] = useState("");
   const [formData, setFormData] = useState(editItem || {});
-  const [errorMessage,setErrorMessage]  = useState("")// Initial state
+  const [errorMessage, setErrorMessage] = useState(""); // Initial state
 
   // Update state when editItem changes
   useEffect(() => {
     if (editItem) {
       setFormData(editItem);
       console.log(formData);
-      
+
       setDueAmount(0);
+      setDueAddedDate("");
     }
   }, [editItem]);
 
@@ -22,12 +24,15 @@ const PopupModal = ({ isOpen, onClose, editItem }) => {
 
   const closeModal = () => {
     onClose();
-    setErrorMessage("")
+    setErrorMessage("");
   };
 
   const handleChange = (e) => {
+    setErrorMessage(""); // Reset error message on input change
     const { name, value } = e.target;
     if (name === "dueAmount") {
+      if (value > formData.pendingAmount)
+        setErrorMessage("Due amount can't be greater than pending amount");
       setDueAmount(value);
     } else {
       setFormData((prevData) => ({
@@ -37,25 +42,33 @@ const PopupModal = ({ isOpen, onClose, editItem }) => {
     }
   };
 
-  const handleSave = async() => {
+  const handleSave = async () => {
     // onSave(formData);  // Uncomment if needed
-     try{
-        const sessionToken =  localStorage.getItem("sessionToken");
-        const payload = {
-            updateId : editItem._id,
-            dueAmount,
-            updateData:formData
-        }
-        await axios.post(urls.addDue, payload, {
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `${sessionToken}`, // ✅ Correct format
-            },
-          });
-         onClose(); // Close modal after saving
-     }catch(err){
-        setErrorMessage(err.message)
-     }
+    try {
+      const sessionToken = localStorage.getItem("sessionToken");
+      const payload = {
+        updateId: editItem._id,
+        dueAmount,
+        updateData: formData,
+      };
+
+      if (dueAddedDate === "") {
+        payload.dueAddedDate = new Date().toISOString();
+      } else {
+        payload.dueAddedDate = new Date(dueAddedDate).toISOString();
+      }
+
+      await axios.post(urls.addDue, payload, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${sessionToken}`, // ✅ Correct format
+        },
+      });
+      onClose();
+      // Close modal after saving
+    } catch (err) {
+      setErrorMessage(err.message);
+    }
   };
 
   return (
@@ -83,13 +96,6 @@ const PopupModal = ({ isOpen, onClose, editItem }) => {
           value={formData.contactNumber || ""}
           onChange={handleChange}
         />
-        <label className="mdlLbl">Loan Amount</label>
-        <input
-          type="text"
-          name="loanAmount"
-          value={formData.loanAmount || ""}
-          readOnly
-        />
         <label className="mdlLbl">Pending Amount</label>
         <input
           type="text"
@@ -97,22 +103,46 @@ const PopupModal = ({ isOpen, onClose, editItem }) => {
           value={formData.pendingAmount || 0}
           readOnly
         />
+        <label className="mdlLbl">date</label>
+        <input
+          type="date"
+          name="dueAddedDate"
+          value={dueAddedDate}
+          onChange={(e) => setDueAddedDate(e.target.value)}
+        />
         <label className="mdlLbl">Due Amount</label>
         <input
           type="number"
           name="dueAmount"
-          placeholder="Due Amount"
-          value={dueAmount}
+          className="dueAmountInput"
+          placeholder="Add Due Amount Here.."
+          // value={dueAmount}
           onChange={handleChange}
+          onFocus={(e) => (e.target.value = dueAmount)}
+          onBlur={(e) => (e.target.placeholder = "Add Due Amount Here..")}
         />
+        {errorMessage && (
+          <p className="error-message">
+            {" "}
+            {errorMessage || "Something wrong couldn't update"}
+          </p>
+        )}
+
         <div className="modal-buttons">
-          <button className="saveBtn" onClick={handleSave} disabled={Number(dueAmount)<=0 || Number(formData.pendingAmount)<=0} >
+          <button
+            className="saveBtn"
+            onClick={handleSave}
+            disabled={
+              Number(dueAmount) <= 0 ||
+              Number(formData.pendingAmount) <= 0 ||
+              errorMessage
+            }
+          >
             Save
           </button>
           <button className="closeBtn" onClick={closeModal}>
             Cancel
           </button>
-          {errorMessage && ( <p className="error-message"> {errorMessage ||"Something wrong couldn't update"}</p>)}
         </div>
       </div>
     </div>

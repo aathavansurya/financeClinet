@@ -15,6 +15,7 @@
   /* 🔹 Modal Box */
   .modal-content {
     width: 90%;
+    /* height: 100%; */
     max-width: 400px;
     background: white;
     padding: 20px;
@@ -22,11 +23,14 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
-  
+  .dueAmountInput::placeholder {
+    color: green; /* Change to your desired color */
+    opacity: 1; /* Ensure full visibility */
+  }
   /* 🔹 Input Fields */
   .modal-content input {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 5px;

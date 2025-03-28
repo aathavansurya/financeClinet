@@ -65,7 +65,7 @@ function Loanstable() {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [isModalOpen]);
 
   // Handle filter changes
   const handleFilterChange = (e) => {

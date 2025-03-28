@@ -9,9 +9,10 @@
     flex-direction: row;
     gap: 10px;
     padding: 10px;
-    background-color: rgba(50, 23, 157, 0.382);
-    color: rgb(119, 21, 158);
+    background-color: rgb(40, 18, 125);
+    color: rgb(239, 239, 239);
     border-radius: 0 0 6px 6px;
+    z-index: 1000; /* Ensure it stays above other elements */
 }
 
 .navbtn{
@@ -24,6 +25,12 @@
     cursor: pointer;
 
 }
+.navbtn.active {
+    background-color: #1e40af; /* Highlight active tab */
+    color: white;
+    font-weight: bold;
+    border-radius: 5px; /* Optional: Add rounded corners */
+  }
 .navbtn:hover{
     border-color: rgb(9, 33, 186);
     box-shadow: 0 5px 15px rgba(12, 25, 29, 0.5);
