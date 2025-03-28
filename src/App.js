@@ -6,22 +6,29 @@ import Loanstable from "./components/tableLoans/Loanstable";
 import Profile from "./components/profile/Profile";
 import History from "./components/histories/History";
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        {/* Define all routes */}
-        <Route path="/" element={<Navigate to="/login" />} /> {/* Redirect root to login */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/addloans" element={<AddLoan />} />
-        <Route path="/allLoans" element={<Loanstable />} />
-        <Route path="/histories" element={<History />} />
-        {/* Fallback route to handle undefined paths */}
-        <Route path="*" element={<Navigate to="/login" />} />
-      </Routes>
-    </Router>
-  );
-};
+const routes = [
+  { path: "/login", element: <Login /> },
+  { path: "/profile", element: <Profile /> },
+  { path: "/addloans", element: <AddLoan /> },
+  { path: "/allLoans", element: <Loanstable /> },
+  { path: "/histories", element: <History /> },
+];
+
+const App = () => (
+  <Router>
+    <Routes>
+      {/* Redirect root to login */}
+      <Route path="/" element={<Navigate to="/login" replace />} />
+
+      {/* Map routes dynamically */}
+      {routes.map(({ path, element }) => (
+        <Route key={path} path={path} element={element} />
+      ))}
+
+      {/* Fallback route */}
+      <Route path="*" element={<Navigate to="/login" replace />} />
+    </Routes>
+  </Router>
+);
 
 export default App;

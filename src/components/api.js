@@ -1,5 +1,5 @@
-// const url = "https://fullstackfinancebkd.onrender.com"
-const url = "http://localhost:3400"
+const url = "https://fullstackfinancebkd.onrender.com"
+// const url = "http://localhost:3400"
 
 const addLoans = url+"/addLoans";
 const fetchLoans = url+"/fetchLoans";
